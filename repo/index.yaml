@@ -15,8 +15,8 @@ entries:
     - https://github.com/mojaloop/mojaloop
     - https://github.com/mojaloop/helm
     urls:
-    - http://mojaloop.io/helm/repo/central-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/central-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.340700061+02:00
     description: Central Helm chart for Kubernetes
@@ -97,8 +97,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/central-directory
     urls:
-    - http://mojaloop.io/helm/repo/centraldirectory-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/centraldirectory-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.353635419+02:00
     description: Central-Directory Helm chart for Kubernetes
@@ -166,8 +166,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/central-end-user-registry
     urls:
-    - http://mojaloop.io/helm/repo/centralenduserregistry-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/centralenduserregistry-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.36178687+02:00
     description: Central-End-User-Registry Helm chart for Kubernetes
@@ -235,8 +235,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/central-hub
     urls:
-    - http://mojaloop.io/helm/repo/centralhub-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/centralhub-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.377700355+02:00
     description: Central-Hub Helm chart for Kubernetes
@@ -321,8 +321,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/central-kms
     urls:
-    - http://mojaloop.io/helm/repo/centralkms-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/centralkms-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.388633425+02:00
     description: Central-KMS Helm chart for Kubernetes
@@ -390,8 +390,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/central-ledger
     urls:
-    - http://mojaloop.io/helm/repo/centralledger-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/centralledger-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.404601461+02:00
     description: Central-Ledger Helm chart for Kubernetes
@@ -476,8 +476,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/forensic-logging-sidecar
     urls:
-    - http://mojaloop.io/helm/repo/forensicloggingsidecar-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/forensicloggingsidecar-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.417021415+02:00
     description: Forensic Logging Sidecar Helm chart for Kubernetes
@@ -562,8 +562,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/interop-switch
     urls:
-    - http://mojaloop.io/helm/repo/interop-switch-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/interop-switch-2.4.0.tgz
+    version: 2.4.0
   ml-api-adapter:
   - apiVersion: v1
     created: 2018-06-13T11:46:58.422061244+02:00
@@ -580,8 +580,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/ml-api-adapter
     urls:
-    - http://mojaloop.io/helm/repo/ml-api-adapter-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/ml-api-adapter-2.4.0.tgz
+    version: 2.4.0
   mockpathfinder:
   - apiVersion: v1
     created: 2018-06-13T11:46:58.449256418+02:00
@@ -598,8 +598,8 @@ entries:
     - https://github.com/mojaloop/helm
     - https://github.com/mojaloop/mock-pathfinder
     urls:
-    - http://mojaloop.io/helm/repo/mockpathfinder-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/mockpathfinder-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.433284032+02:00
     description: Mock-Pathfinder Helm chart for Kubernetes
@@ -666,8 +666,8 @@ entries:
     - https://github.com/mojaloop/mojaloop
     - https://github.com/mojaloop/helm
     urls:
-    - http://mojaloop.io/helm/repo/mojaloop-2.4.tgz
-    version: "2.4"
+    - http://mojaloop.io/helm/repo/mojaloop-2.4.0.tgz
+    version: 2.4.0
   - apiVersion: v1
     created: 2018-06-13T11:46:58.47722865+02:00
     description: Mojaloop Helm chart for Kubernetes
