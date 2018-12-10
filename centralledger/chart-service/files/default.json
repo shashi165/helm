@@ -1,7 +1,8 @@
+{{- $kafkaHost := ( .Values.config.kafka_host | replace "$release_name" .Release.Name ) -}}
 {
-  "PORT": "$service_api_port",
-  "ADMIN_PORT": "$service_admin_port",
-  "HOSTNAME": "$ingress_host",
+  "PORT": {{ .Values.containers.admin.service.ports.api.internalPort }},
+  "ADMIN_PORT": {{ (printf "%.0f" .Values.containers.admin.service.ports.api.internalPort) }},
+  "HOSTNAME": {{ .Values.ingress.hosts.api }},
   "ENABLE_TOKEN_AUTH": false,
   "ENABLE_BASIC_AUTH": false,
   "RUN_MIGRATIONS": true,
@@ -15,8 +16,8 @@
   },
   "SIDECAR": {
     "DISABLED": true,
-    "HOST": "$forensicloggingsidecar_host",
-    "PORT": "$forensicloggingsidecar_port",
+    "HOST": {{ printf "%s-%s" .Release.Name .Values.config.forensicloggingsidecar_host }},
+    "PORT": {{ (printf "%.0f" .Values.config.forensicloggingsidecar_port) }},
     "CONNECT_TIMEOUT": 45000,
     "RECONNECT_INTERVAL": 5000
   },
@@ -55,11 +56,11 @@
   "KAFKA": {
     "TOPIC_TEMPLATES": {
       "PARTICIPANT_TOPIC_TEMPLATE": {
-        "TEMPLATE": "topic-{{participantName}}-{{functionality}}",
+        "TEMPLATE": "topic-{{"{{"}}participantName{{"}}"}}-{{"{{"}}functionality{{"}}"}}",
         "REGEX": "topic-(.*)-(.*)-(.*)"
       },
       "GENERAL_TOPIC_TEMPLATE": {
-        "TEMPLATE": "topic-{{functionality}}-{{action}}",
+        "TEMPLATE": "topic-{{"{{"}}functionality{{"}}"}}-{{"{{"}}action{{"}}"}}",
         "REGEX": "topic-(.*)-(.*)"
       }
     },
@@ -81,7 +82,7 @@
               "client.id": "cl-con-transfer-prepare",
               "debug": "all",
               "group.id": "central-ledger-kafka",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "socket.blocking.max.ms": 1,
               "fetch.wait.max.ms": 100,
               "fetch.error.backoff.ms": 1,
@@ -112,7 +113,7 @@
               "client.id": "cl-con-transfer-fulfil",
               "debug": "all",
               "group.id": "central-ledger-kafka",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "socket.blocking.max.ms": 1,
               "fetch.wait.max.ms": 100,
               "fetch.error.backoff.ms": 1,
@@ -143,7 +144,7 @@
               "client.id": "cl-con-transfer-reject",
               "debug": "all",
               "group.id": "central-ledger-kafka",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "socket.blocking.max.ms": 1,
               "fetch.wait.max.ms": 100,
               "fetch.error.backoff.ms": 1,
@@ -175,7 +176,7 @@
               "client.id": "cl-con-position-prepare",
               "debug": "all",
               "group.id": "central-ledger-kafka",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "socket.blocking.max.ms": 1,
               "fetch.wait.max.ms": 100,
               "fetch.error.backoff.ms": 1,
@@ -205,7 +206,7 @@
               "client.id": "cl-con-position-fulfil",
               "debug": "all",
               "group.id": "central-ledger-kafka",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "socket.blocking.max.ms": 1,
               "fetch.wait.max.ms": 100,
               "fetch.error.backoff.ms": 1,
@@ -235,7 +236,7 @@
               "client.id": "cl-con-position-abort",
               "debug": "all",
               "group.id": "central-ledger-kafka",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "socket.blocking.max.ms": 1,
               "fetch.wait.max.ms": 100,
               "fetch.error.backoff.ms": 1,
@@ -260,7 +261,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-prod-transfer-prepare",
               "event_cb": true,
               "compression.codec": "none",
@@ -286,7 +287,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-prod-transfer-fulfil",
               "event_cb": true,
               "compression.codec": "none",
@@ -312,7 +313,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-transfer-reject",
               "event_cb": true,
               "compression.codec": "none",
@@ -340,7 +341,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-prod-position-prepare",
               "event_cb": true,
               "compression.codec": "none",
@@ -366,7 +367,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-prod-position-fulfil",
               "event_cb": true,
               "compression.codec": "none",
@@ -392,7 +393,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-prod-position-abort",
               "event_cb": true,
               "compression.codec": "none",
@@ -420,7 +421,7 @@
             },
             "rdkafkaConf": {
               "debug": "all",
-              "metadata.broker.list": "$kafka_host:$kafka_port",
+              "metadata.broker.list": "{{ (default .Values.config.kafka_host $kafkaHost) }}:{{ .Values.config.kafka_port }}",
               "client.id": "cl-prod-notification-event",
               "event_cb": true,
               "compression.codec": "none",
